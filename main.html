@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./CusomIcons/all.css">
+    <script src="./javascript/processes.js"></script>
+    <script src="./javascript/moment.js"></script>
+    <script src="./javascript/moment-hijri.js"></script>
+    <script src="./javascript/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div id="nav" class="nav">
+        <div id="home-div"  title="الصفحة الرئيسية">
+            <a href="./index.html" id="home">
+                <i class="mn home" style="font-size: 23px;"></i>
+            </a>
+        </div>
+        <div class="hint-div" title="عرض معلومات أكثر..." onclick="$('#popup-3').addClass('active'); setTimeout(() => $('#popup-3').focus(), 100);">
+            <i class="mn info-filled" style="font-size: 25px;"></i>
+        </div>
+        
+        <div id="pages-menu" tabindex="0">
+            <div id="open-menu" title="عرض الخيارات...">
+                <i class="mn menu" style="font-size: 25px;"></i>
+            </div>
+            <ul>
+                <li class="links"><a href="./main.html?value=1">حساب الأيام</a></li>
+                <li class="links"><a href="./main.html?value=2">حساب الشهور</a></li>
+                <li class="links"><a href="./main.html?value=3">حساب فترة</a></li>
+                <li class="links"><a href="./main.html?value=4">حساب العمر</a></li>
+                <li class="links"><a href="./main.html?value=5">تحويل التاريخ</a></li>
+                <li class="links"><a href="./main.html?value=6">البرج الفلكي</a></li>
+            </ul>
+        </div>
+
+        <div class="link-div" title="نسخ رابط الموقع..."><i class="mn link" style="font-size: 30px;"></i></div>
+
+        <div id="share-menu"  tabindex="0">
+            <div id="bg"></div>
+            <div id="share-btn" title="تواصل معي...">
+                <i class="mn cusomer-service" style="font-size: 30px;"></i>
+            </div>
+
+            <div data-text="ahmedjameel2004@gmail.com" id="email-div" class="social-btn">
+                <a href="mailto:ahmedjameel2004@gmail.com">
+                    <img src="./Images/SocialMedia/gmail.png" class="social-icons" id="email-icon"></img>
+                </a>
+            </div>
+            <div data-text="احمد جميل" id="facebook-div" class="social-btn">
+                <a href="https://www.facebook.com/profile.php?id=100006341402115" target="_blank">
+                    <img src="./Images/SocialMedia/facebook.png" class="social-icons" id="facebook-icon"></img>
+                </a>
+            </div>
+            <div data-text="mli7i" id="messenger-div" class="social-btn">
+                <a href="https://m.me/mli7i" target="_blank">
+                    <img src="./Images/SocialMedia/messenger.png" class="social-icons" id="messenger-icon"></img>
+                </a>
+            </div>
+            <div data-text="+967 776124125" dir="ltr" id="whats-div" class="social-btn">
+                <a href="https://wa.me/qr/NGLLY6LGVTJIF1" target="_blank">
+                    <img src="./Images/SocialMedia/whatsapp.png" class="social-icons" id="whatsapp-icon"></img>
+                </a>
+            </div>
+            <div data-text="_mli7i_" id="insta-div" class="social-btn">
+                <a href="https://instagram.com/_mli7i_?igshid=NGExMmI2YTkyZg==" target="_blank">
+                    <img src="./Images/SocialMedia/instagram.png" class="social-icons" id="instagram-icon"></img>
+                </a>
+            </div>
+            <div data-text="mli7i2005" id="snap-div" class="social-btn">
+                <a href="https://www.snapchat.com/add/mli7i2005" target="_blank">
+                    <img src="./Images/SocialMedia/snapchat.png" class="social-icons" id="insta-icon"></img>
+                </a>
+            </div>
+            <div data-text="mli7i2005" id="telegram-div" class="social-btn">
+                <a href="https://t.me/mli7i2005" target="_blank">
+                    <img src="./Images/SocialMedia/telegram.png" class="social-icons" id="telegram-icon"></img>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function imgError(element) {
+            $(element).siblings('i').css('display', 'block');
+            $(element).css('display', 'none');
+        }
+    </script>
+
+    <div class="container" tabindex="0">
+        <div class="img">
+            <div class="form-box">
+
+                <div id="form" class="form">
+                    <h1 id="title">Register</h1>
+                    
+                    <div class="radios-div">
+                        <div class="greg-div">
+                            <input type="radio" name="radios" value="greg" id="greg-rad" checked>
+                            <label for="greg-rad" id="radio-lab1">ميلادي</label>
+                        </div>
+                        <div class="hijr-div">
+                            <input type="radio" name="radios" value="hijr" id="hijr-rad">
+                            <label for="hijr-rad" id="radio-lab2">هجري</label>
+                        </div>
+                    </div>
+
+                    <div class="input-box" id="input-div1">
+                        <label for="" id="date-lab1">التاريخ الأول (بالميلادي)</label>
+                        <div id="date-inputs1" class="date-inputs">
+                            <select id="days1" name="" class="days" value="days" title="قم بتحديد اليوم في التاريخ الأول">
+                                <option value="default" selected disabled hidden>اليوم</option>
+                            </select>
+                            <select id="months1" name="" class="months" value="months" title="قم بتحديد الشهر في التاريخ الأول">
+                                <option value="default" selected disabled hidden>الشهر</option>
+                            </select>
+                            <input type="number" name="" class="years" id="years-1" placeholder="السنة" title="قم بإدخال السنة في التاريخ الأول" autocomplete="off" maxlength="4">
+                        </div>
+                    </div>
+                    <div class="input-box" id="input-div2">
+                        <label for="" id="date-lab2">التاريخ الثاني (بالميلادي)</label>
+                        <div id="date-inputs2" class="date-inputs">
+                            <select id="days2" name="" class="days" value="days" title="قم بتحديد اليوم في التاريخ الثاني">
+                                <option value="default" selected disabled hidden>اليوم</option>
+                            </select>
+                            <select id="months2" name="" class="months" value="months" title="قم بتحديد الشهر في التاريخ الثاني">
+                                <option value="default" selected disabled hidden>الشهر</option>
+                            </select>
+                            <input type="number" name="" class="years" id="years-2" placeholder="السنة" title="قم بإدخال السنة في التاريخ الثاني" autocomplete="off" maxlength="4">
+                        </div>
+                    </div>
+                    <button type="submit" id="butt">حساب</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="popup" id="popup-1">
+        <div class="overlay">
+            <div id="content-1" class="content">
+                <h1 style="font-family: 'HelveticaWorld-Bold';">النتيجة</h1>
+                <hr>
+                <div id="result-content" class="display-content" tabindex="0"></div>
+                <button class="close-btn" id="result-close">إغـلاق</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="popup" id="popup-2" tabindex="0">
+        <div class="overlay">
+            <div class="content" id="content-2">
+                <i class="mn error"></i>
+                <h1>خطأ</h1>
+                <div id="error-content" class="display-content"><p>يجب عليك ملئ جميع الحقول !</p></div>
+                <button class="close-btn" id="error-close">إغـلاق</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup" id="popup-3" tabindex="0">
+        <div class="overlay">
+            <div class="content" id="content-3">
+                <h1>لمحة</h1>
+                <hr>
+                <div id="hent-content" class="display-content"><ul></ul></div>
+                <button class="close-btn" id="hent-close">إغـلاق</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

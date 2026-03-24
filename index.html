@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متعقب الوقت</title>
+    <link rel="website icon" type="png" href="./Images/activity.png">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="./CusomIcons/all.css">
+    <script src="javascript/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            console.log(get_os());
+            console.log(get_address2());
+            console.log(get_browser_name());
+            // checkInternetConnection().then((isConnected) => console.log(isConnected ? 'connected' : 'not connected'));
+            let sesseionId = sessionStorage.getItem('sesseion-id');
+            if (sesseionId) {
+                console.log('sesseion exists');
+                console.log(`sesseion-id: ${sesseionId}`);
+            } else {
+                sesseionId = Math.floor(Math.random() * (9999 - 1000)) + 1000 + "";
+                sessionStorage.setItem('sesseion-id', sesseionId);
+                console.log('sesseion created');
+                console.log(`sesseion-id: ${sesseionId}`);
+                console.log(`sesseion-id: ${sessionStorage.getItem('sesseion-id')}`);
+            }
+            $('.options-card').mouseenter(function() {
+                let hover = $(this).attr('id');
+                $(`.options-card:not(#${hover})`).css({
+                    'filter': ' grayscale(100%)',
+                    'transform': 'scale(0.9, 0.9)'
+                });
+            });
+            $('.options-card').mouseleave(function() {
+                let hover = $(this).attr('id');
+                $(`.options-card:not(#${hover})`).css({
+                    'filter': 'none',
+                    'transform': 'scale(1, 1)'
+                });
+            });
+            $('.options-identifi').each(function() {
+                let parent = $(this);
+                let element = $(this).children('p');
+                resize_to_fit(parent, element);
+            });
+        });
+        function resize_to_fit(parent, element) {
+            if ($(element).height() >= $(parent).height() || $(element).height() - $(parent).height() >= 5) {
+                let fontsize = $(element).css('font-size');
+                $(element).css('font-size', parseFloat(fontsize) - 1);
+                resize_to_fit(parent, element);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1 class="page-title">متعقب الوقت</h1>
+    <p class="page-identifi">
+        مرحباً بك في موقع  <b>متعقب الوقت</b> !. المكان الذي يجمع بين التعدد بالخصائص والدقة في عالم التواريخ و الزمن.
+        <br>
+        هنا يمكنك حساب عدد الأيام و عدد الشهور و الفترات بين تواريخ مختلفة، 
+        كما يمكنك حساب العمر بدقة متناهية، 
+        وإستكشاف معلومات مثيرة حول تاريخ الميلاد الخاص بك، 
+        بما في ذلك البرج الفلكي الذي تنتمي إليه والمميزات والسلبيات المرتبطة به.
+        <br> 
+        بالإضافة إلى ذلك... يمكنك تحويل التواريخ بين الميلادي والهجري بكل سهولة !
+        <br> 
+        إكتشف قدراتنا الفريدة وإحصل على إجابات دقيقة وشاملة لأسئلتك المتعلقة بالتواريخ والأزمنة.
+        قم بزيارتنا وإستكشف عالماً رائعاً من الزمن والتواريخ بطريقة ذكية وممتعة !.
+        <br>
+        <br>
+        للمراجعة والإستفسار وتقديم المقترحات المتعلقة بالموقع، يرجى التواصل مع مطور المشروع عن طريق الروابط الموجودة في أسفل الصفحة !
+    </p>
+
+    <div class="options">
+        <a href="main.html?value=1">
+            <div class="options-card" id="days-div">
+                <div class="options-title"><h2>حساب الأيام</h2></div>
+                <div class="options-img"><img src="./Images/days.png" alt="days"></div>
+                <div class="options-identifi">
+                    <p>
+                        يتيح لك هذا الخيار حساب الأيام الفردية بدقة بين تاريخين. 
+                        مثل تاريخ البدء وتاريخ الإنتهاء لمهمة معينة أو حساب عدد الأيام التي مضت منذ حدث معين.
+                    </p>
+                </div>
+            </div>
+        </a>
+        <a href="main.html?value=2">
+            <div class="options-card" id="months-div">
+                <div class="options-title"><h2>حساب الشهور</h2></div>
+                <div class="options-img"><img src="./Images/months.png" alt="months"></div>
+                <div class="options-identifi">
+                    <p>
+                        يتيح لك هذا الخيار حساب الأشهر الفردية بين تاريخين. 
+                        يعد هذا الخيار مفيد في حالة الحاجة ألى حساب الفترة الفترة الزمنية بالشهور بدلاً من الأيام.
+                    </p>
+                </div>
+            </div>
+        </a>
+        <a href="main.html?value=3">
+            <div class="options-card" id="period-div">
+                <div class="options-title"><h2>حساب فترة</h2></div>
+                <div class="options-img"><img src="./Images/period.png" alt="period"></div>
+                <div class="options-identifi">
+                    <p>
+                        يتيح لك هذا الخيار حساب الفترة الكاملة بين تاريخين.
+                        بما في ذلك عدد السوات والشهور والأيام. 
+                        يمكن إستخدام هذا الخيار لحساب الفترة الزمنية بشكل شامل.
+                    </p>
+                </div>
+            </div>
+        </a>
+        <a href="main.html?value=4">
+            <div class="options-card" id="age-div">
+                <div class="options-title"><h2>حساب العمر</h2></div>
+                <div class="options-img"><img src="./Images/age.png" alt="age"></div>
+                <div class="options-identifi">
+                    <p>
+                        يتيح لك هذا الخيار معرفة العمر الفعلي بإستخدام تاريخ الميلاد الميلادي أو الهجري.
+                        كما يمكنك إستكشاف تفاصيل مثيرة وممتعة حول تاريخ ميلادك.
+                    </p>
+                </div>
+            </div>
+        </a>
+        <a href="main.html?value=5">
+            <div class="options-card" id="convert-div">
+                <div class="options-title"><h2>تحويل التاريخ</h2></div>
+                <div class="options-img"><img src="./Images/convert.png" alt="convert"></div>
+                <div class="options-identifi">
+                    <p>
+                        يتيح لك هذا الخيار تحويل التواريخ بين التقويم الميلادي والتقويم الهجري والعكس. 
+                        يمكن إستخدام هذا الخيار لتحويل التواريخ بسولة ودقة لأغراض دينية وثقافية.
+                    </p>
+                </div>
+            </div>
+        </a>
+        <a href="main.html?value=6">
+            <div class="options-card" id="horoscope-div">
+                <div class="options-title"><h2>البرج الفلكي</h2></div>
+                <div class="options-img"><img src="./Images/astrology.png" alt="astrology"></div>
+                <div class="options-identifi">
+                    <p>
+                        يتيح لك هذا الخيار معرفة البرج الفلكي الذي تنتمي إليه. 
+                        ومعرفة المميزات والسلبيات المرتبطة به.
+                        وتحديد شخصيتك وصفاتك الفريدة التي قد تكون لها تأثير كبير على حياتك.
+                    </p>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="tail">
+        <img src="./Images/MyProfilePhoto.jpg" alt="Ahmed Jamil" id="profile-photo" onerror="$(this).remove();">
+        <h2 id="profile-name">احمد جميل</h2>
+        <div class="social-div">
+            <div class="social-btn" data-text="ahmedjameel2004@gmail.com">
+                <div class="social-bg"></div>
+                <a href="mailto:ahmedjameel2004@gmail.com">
+                    <i class="sm2 mail social-icons" id="mail-icon"></i>
+                    <!-- <img src="./Images/SocialMedia/gmail.png" alt="" class="social-imgs" onerror="onError(this)"> -->
+                </a>
+            </div>
+            <div class="social-btn" data-text="احمد جميل">
+                <div class="social-bg"></div>
+                <a href="https://www.facebook.com/profile.php?id=100006341402115">
+                    <i class="sm2 facebook social-icons" id="facebook-icon"></i>
+                    <!-- <img src="./Images/SocialMedia/facebook.png" alt="" class="social-imgs" onerror="onError(this)"> -->
+                </a>
+            </div>
+            <div class="social-btn" data-text="mli7i">
+                <div class="social-bg"></div>
+                <a href="https://m.me/mli7i">
+                    <i class="sm2 messenger social-icons" id="messenger-icon"></i>
+                    <!-- <img src="./Images/SocialMedia/messenger.png" alt="" class="social-imgs" onerror="onError(this)"> -->
+                </a>
+            </div>
+            <div class="social-btn" data-text="+967 776124125">
+                <div class="social-bg"></div>
+                <a href="https://wa.me/qr/NGLLY6LGVTJIF1">
+                    <i class="sm2 whatsapp social-icons" id="whatsapp-icon"></i>
+                    <!-- <img src="./Images/SocialMedia/whatsapp.png" alt="" class="social-imgs" onerror="onError(this)"> -->
+                </a>
+            </div>
+            <div class="social-btn" data-text="_mli7i_">
+                <div class="social-bg"></div>
+                <a href="https://instagram.com/_mli7i_?igshid=NGExMmI2YTkyZg==">
+                    <i class="sm2 instagram social-icons" id="instagram-icon"></i>
+                    <!-- <img src="./Images/SocialMedia/instagram.png" alt="" class="social-imgs" onerror="onError(this)"> -->
+                </a>
+            </div>
+            <div class="social-btn" data-text="mli7i2005">
+                <div class="social-bg"></div>
+                <a href="https://www.snapchat.com/add/mli7i2005">
+                    <i class="sm2 snapchat social-icons" id="snapchat-icon"></i>
+                    <!-- <img src="./Images/SocialMedia/snapchat.png" alt="" class="social-imgs" onerror="onError(this)"> -->
+                </a>
+            </div>
+            <div class="social-btn" data-text="mli7i2005">
+                <div class="social-bg"></div>
+                <a href="https://t.me/mli7i2005">
+                    <i class="sm2 telegram social-icons" id="telegram-icon"></i>
+                    <!-- <img src="./Images/SocialMedia/telegram.png" alt="" class="social-imgs" onerror="onError(this)"> -->
+                </a>
+            </div>
+        </div>
+        <!-- <p class="links"><b>Email: </b><a href="mailto:ahmedjameel2004@gmail.com">ahmedjameel2004@gmail.com</a></p>
+        <p class="links"><b>Facebook: </b><a href="https://www.facebook.com/profile.php?id=100006341402115">احمد جميل</a></p>
+        <p class="links"><b>Massenger: </b><a href="https://m.me/mli7i">mli7i</a></p>
+        <p class="links"><b>Whatsapp: </b><a href="https://wa.me/qr/NGLLY6LGVTJIF1">+967 776124125</a></p>
+        <p class="links"><b>Instagram: </b><a href="https://instagram.com/_mli7i_?igshid=NGExMmI2YTkyZg==">_mli7i_</a></p>
+        <p class="links"><b>Snapchat: </b><a href="https://www.snapchat.com/add/mli7i2005">mli7i2005</a></p>
+        <p class="links"><b>Telegram: </b><a href="https://t.me/mli7i2005">mli7i2005</a></p> -->
+    </div>
+    <script>
+        function onError(element) {
+            $('.social-div').css('display', 'none');
+            $('.links').css('display', 'block');
+        }
+    </script>
+</body>
+</html>
